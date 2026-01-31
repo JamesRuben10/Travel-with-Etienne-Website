@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Travel with Etienne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== COMPLETE CSS ====== */
+        :root {
+            --navy: #0a1f44;
+            --navy-light: #1a2f5d;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --accent: #f4b41a;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(10, 31, 68, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            color: var(--navy);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-info-header a {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-info-header a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links,
+            .contact-info-header {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                text-align: center;
+            }
+            
+            .nav-links.active li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(10, 31, 68, 0.85), rgba(10, 31, 68, 0.9)), url('image00003.jpeg') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0 80px;
+            margin-top: 80px;
+            height: 85vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Gallery Styles */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: var(--off-white);
+            color: var(--navy);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        /* Gallery Grid with Captions */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 31, 68, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        /* Caption Styles */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 31, 68, 0.9), transparent);
+            color: var(--white);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-image-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .modal-caption {
+            background-color: rgba(10, 31, 68, 0.9);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            margin-top: -5px;
+        }
+
+        .modal-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .modal-caption p {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--accent);
+            color: var(--navy);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .modal-close-btn:hover {
+            background-color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1 1 250px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-image {
+                height: 250px;
+            }
+            
+            .modal-image-content {
+                max-width: 95%;
+            }
+            
+            .modal-caption {
+                padding: 15px;
+            }
+            
+            .modal-caption h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 120px; width: auto; margin-left: 15px;"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Cruise Services</a></li>
+                    <li><a href="gallery.html" style="color: var(--accent);">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="contact-info-header">
+                    <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Travel Gallery</h1>
+            <p>Explore beautiful moments from our clients' unforgettable journeys around the world</p>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Travel Memories</h2>
+                <p>Browse through photos from our amazing cruise adventures and travel experiences</p>
+            </div>
+            
+            <!-- Gallery Grid with Captions -->
+            <div class="gallery-grid">
+                <!-- Image 1 with Caption -->
+                <div class="gallery-item" data-category="destination">
+                    <img src="image00058.png" 
+                         alt="Eiffel Tower in Paris" class="gallery-image">
+                </div>
+                
+                <!-- Image 2 with Caption -->
+                <div class="gallery-item" data-category="cruise">
+                    <img src="image00006.png" 
+                         alt="Luxury cruise ship" class="gallery-image">
+                </div>
+                
+                <!-- Image 3 with Caption -->
+                <div class="gallery-item" data-category="destination">
+                    <img src="image00018.png" 
+                         alt="Pyramids of Giza" class="gallery-image">
+                </div>
+                
+                <!-- Image 4 with Caption -->
+                <div class="gallery-item" data-category="group">
+                    <img src="image00037.png" 
+                         alt="Group on a beach" class="gallery-image">
+                </div>
+                
+                <!-- Image 5 with Caption -->
+                <div class="gallery-item" data-category="cruise">
+                    <img src="image00032.jpeg" 
+                         alt="Cruise ship at sunset" class="gallery-image">
+                </div>
+                
+                <!-- Image 6 with Caption -->
+                <div class="gallery-item" data-category="destination">
+                    <img src="image00050.png" 
+                         alt="Cape Town views" class="gallery-image">
+                </div>
+                
+                <!-- Image 7 with Caption -->
+                <div class="gallery-item" data-category="group">
+                    <img src="image00022.jpeg" 
+                         alt="Mountain hiking group" class="gallery-image">
+                </div>
+                
+                <!-- Image 8 with Caption -->
+                <div class="gallery-item" data-category="cruise">
+                    <img src="image00029.jpeg" 
+                         alt="Cruise ship interior" class="gallery-image">
+                </div>
+                
+                <!-- Image 9 with Caption -->
+                <div class="gallery-item" data-category="destination">
+                    <img src="image00053.png" 
+                         alt="Istanbul skyline" class="gallery-image">
+                </div>
+                
+                <!-- Image 10 with Caption -->
+                <div class="gallery-item" data-category="group">
+                    <img src="image00020.jpeg" 
+                         alt="Beach sunset group" class="gallery-image">
+                </div>
+                <!-- Image 11 with Caption -->
+                <div class="gallery-item" data-category="group">
+                    <img src="image00011.png" 
+                         alt="Beach sunset group" class="gallery-image">
+            </div>
+            <!-- Image 12 with Caption -->
+                <div class="gallery-item" data-category="group">
+                    <img src="image00019.jpeg" 
+                         alt="Beach sunset group" class="gallery-image">
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-image-content">
+            <span class="modal-close-btn">&times;</span>
+            <img id="modalImg" src="" alt="" class="modal-image">
+            <div class="modal-caption">
+                <h3 id="modalImgTitle">Image Title</h3>
+                <p id="modalImgDesc">Image description will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 100px; width: auto; margin-right: 12px; vertical-align: middle; display: inline-block;"><span style="font-size: 1rem; vertical-align: middle;">Travel with <span>Etienne</span></span></div>
+                    <p>Your personal cruise specialist, creating unforgettable sea voyage experiences tailored just for you.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfr" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Cruise Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Luderitz Namibia</p>
+                    <p><i class="fas fa-phone"></i> +264812842832</p>
+                    <p><i class="fas fa-envelope"></i> info@travelwithetienne.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Travel with Etienne. All rights reserved. | Designed by echoweb</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Show/hide gallery items based on filter
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Image Modal Functionality
+            const imageModal = document.getElementById('imageModal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const modalImg = document.getElementById('modalImg');
+            const modalImgTitle = document.getElementById('modalImgTitle');
+            const modalImgDesc = document.getElementById('modalImgDesc');
+            
+            // Add click event to each gallery item
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('.gallery-image');
+                    const title = this.querySelector('.gallery-caption h3').textContent;
+                    const desc = this.querySelector('.gallery-caption p').textContent;
+                    
+                    // Set modal content
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modalImgTitle.textContent = title;
+                    modalImgDesc.textContent = desc;
+                    
+                    // Show modal
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal events
+            modalCloseBtn.addEventListener('click', closeImageModal);
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === imageModal) {
+                    closeImageModal();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                    closeImageModal();
+                }
+            });
+            
+            function closeImageModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            console.log('Gallery page loaded successfully');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Services | Travel with Etienne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== COMPLETE CSS ====== */
+        :root {
+            --navy: #0a1f44;
+            --navy-light: #1a2f5d;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --accent: #f4b41a;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(10, 31, 68, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            color: var(--navy);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-info-header a {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-info-header a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links,
+            .contact-info-header {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                text-align: center;
+            }
+            
+            .nav-links.active li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(10, 31, 68, 0.85), rgba(10, 31, 68, 0.9)), url('image00026.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+            height: 85vh;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Our Trips Section */
+        .trips-section {
+            margin-bottom: 80px;
+        }
+
+        .trips-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .trips-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--navy);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .trips-header h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Destination Cards Grid - 3 columns */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .destination-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 31, 68, 0.2);
+        }
+
+        /* Fixed Image Size - Full Display */
+        .destination-image {
+            height: 300px; /* Increased height for better visibility */
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-repeat: no-repeat;
+        }
+
+        /* Reduced Content Area */
+        .destination-content {
+            padding: 20px;
+            min-height: 140px; /* Reduced height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .destination-content h3 {
+            color: var(--navy);
+            margin-bottom: 8px; /* Reduced margin */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .destination-content p {
+            color: var(--text-light);
+            margin-bottom: 15px; /* Reduced margin */
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            line-clamp: 2; /* Standard property for compatibility */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .destination-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Reduced margin */
+            padding-top: 10px; /* Reduced padding */
+            border-top: 1px solid #eee;
+        }
+
+        .destination-price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--navy);
+            padding: 8px 20px; /* Reduced padding */
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Modal/Destination Details Overlay */
+        .destination-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .destination-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 15px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: var(--navy);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 31, 68, 0.9), transparent);
+            color: var(--white);
+            padding: 40px;
+        }
+
+        .modal-header-overlay h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .modal-header-overlay .modal-price {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-description {
+            margin-bottom: 30px;
+        }
+
+        .modal-description h3 {
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .modal-description h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .modal-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-btn.primary {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .modal-btn.secondary {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1 1 250px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .destinations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .trips-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .destination-image {
+                height: 250px;
+            }
+            
+            .modal-content {
+                max-height: 95vh;
+            }
+            
+            .modal-header {
+                height: 250px;
+            }
+            
+            .modal-header-overlay h2 {
+                font-size: 1.8rem;
+            }
+            
+            .modal-body {
+                padding: 25px;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 120px; width: auto; margin-left: 15px;"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" style="color: var(--accent);">Cruise Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="contact-info-header">
+                    <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Cruise Services</h1>
+            <p>Discover our specialized cruise packages designed for every type of traveler</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Our Destinations</h2>
+                <p>Discover incredible cruise and travel destinations across the world</p>
+            </div>
+            
+            <!-- Our Trips Section -->
+            <div class="trips-section">
+                <div class="trips-header">
+                    <h2>Our Trips</h2>
+                </div>
+                
+                <div class="destinations-grid">
+                    <!-- Trip 1 - Cairo Egypt -->
+                    <div class="destination-card" data-destination="cairo-egypt">
+                        <div class="destination-image" style="background-image: url('Cairo Egypt 2.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>Group Tour to Cairo, Egypt</h3>
+                            <p>Experience ancient pyramids in luxury. Walk in the footsteps of pharaohs on this exclusive Nile River cruise with guided pyramid tours.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 34950</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 2 - Cape Town -->
+                    <div class="destination-card" data-destination="cape-town">
+                        <div class="destination-image" style="background-image: url('Cape Town 21-27-26 & 4-10-27.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>Group Tour to Cape Town</h3>
+                            <p>Explore Table Mountain, pristine beaches, and world-class winelands in South Africa's mother city.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 10950</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 3 - MSC Cruise Dur-Moz -->
+                    <div class="destination-card" data-destination="msc-dur-moz">
+                        <div class="destination-image" style="background-image: url('MSC Cruise Dur-Moz 26-27.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>MSC Cruise (Pomene Island)</h3>
+                            <p>Luxury cruise from Durban to Mozambique's pristine beaches and crystal-clear waters.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 43500</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 4 - MSC Christmas Cruise -->
+                    <div class="destination-card" data-destination="msc-christmas">
+                        <div class="destination-image" style="background-image: url('MSC Christmas Cruise dec 26.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>MSC Christmas Cruise</h3>
+                            <p>Celebrate the holidays in style with festive entertainment and luxury amenities aboard MSC.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 64570</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 5 - Mauritius Cruise -->
+                    <div class="destination-card" data-destination="mauritius-cruise">
+                        <div class="destination-image" style="background-image: url('Mauritius Cruise 2 dec 26 - jan 27.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>MSC Mauritius Cruise</h3>
+                            <p>Discover French-inspired culture, volcanic landscapes, and turquoise lagoons of Mauritius.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 107500</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 6 - Zanzibar -->
+                    <div class="destination-card" data-destination="zanzibar">
+                        <div class="destination-image" style="background-image: url('Zanzibar 2026.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>Group Tour to Zanzibar</h3>
+                            <p>Experience the Spice Island's white sand beaches, historic Stone Town, and rich culture.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 27950</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 7 - Greece Cruise -->
+                    <div class="destination-card" data-destination="greece-cruise">
+                        <div class="destination-image" style="background-image: url('Greece CRUISE 26.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>MSC Mediterranean Cruise</h3>
+                            <p>Visit iconic Greek islands, ancient ruins, and turquoise waters of the Aegean Sea.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 28950</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 8 - Istanbul -->
+                    <div class="destination-card" data-destination="istanbul">
+                        <div class="destination-image" style="background-image: url('Istanbul 2 june 26.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>Group Tour to Istanbul</h3>
+                            <p>Explore where East meets West with historic mosques, bazaars, and Bosphorus views.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 28950</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trip 9 - MSC Cruise Adventure -->
+                    <div class="destination-card" data-destination="msc-cruise">
+                        <div class="destination-image" style="background-image: url('MSC Cruise Dur-Moz 26-27.PNG')"></div>
+                        <div class="destination-content">
+                            <h3>MSC Cruise Adventure</h3>
+                            <p>Explore Southern African coastlines with luxury accommodations and premium dining.</p>
+                            <div class="destination-details">
+                                <span class="destination-price">From N$ 43500</span>
+                                <a href="contact.html" class="btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Modal/Overlay -->
+    <div id="destinationModal" class="destination-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header" id="modalHeader">
+                <div class="modal-header-overlay">
+                    <h2 id="modalTitle">Destination Title</h2>
+                    <div class="modal-price" id="modalPrice">From $0</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-description">
+                    <h3>Trip Details</h3>
+                    <p id="modalDescription">Detailed description will appear here.</p>
+                </div>
+                
+                <div class="modal-details-grid" id="modalDetails">
+                    <!-- Details will be populated by JavaScript -->
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="contact.html" class="modal-btn primary">
+                        <i class="fas fa-calendar-check"></i> Book This Trip
+                    </a>
+                    <a href="contact.html" class="modal-btn secondary">
+                        <i class="fas fa-question-circle"></i> Request More Info
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 100px; width: auto; margin-right: 12px; vertical-align: middle; display: inline-block;"><span style="font-size: 1rem; vertical-align: middle;">Travel with <span>Etienne</span></span></div>
+                    <p>Your personal cruise specialist, creating unforgettable sea voyage experiences tailored just for you.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfr" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Cruise Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Luderitz Namibia</p>
+                    <p><i class="fas fa-phone"></i> +264812842832</p>
+                    <p><i class="fas fa-envelope"></i> info@travelwithetienne.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Travel with Etienne. All rights reserved. | Designed by echoweb</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Destination data - you can customize this for each destination
+        const destinationData = {
+            'cairo-egypt': {
+                title: 'Group Tour to Cairo, Egypt',
+                image: 'Cairo Egypt 2.PNG',
+                price: 'From N$ 34950 Per Person',
+                description: 'Experience the wonders of ancient Egypt with our exclusive group tour to Cairo. Walk in the footsteps of pharaohs, explore the majestic pyramids of Giza, and cruise along the historic Nile River. This luxury package includes guided tours, premium accommodations, and authentic Egyptian cuisine.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 5 nights accommodation in Cairo' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Includes: Camel Ride, Nile River Cruise, Giza, The Epyptian Museum' },
+                    { icon: 'fas fa-utensils', text: 'Meals: Breakfast & Dinner included' },
+                    { icon: 'fas fa-plane', text: 'Flights: Return Flights from Windhoek' }
+                ]
+            },
+            'cape-town': {
+                title: 'Group Tour to Cape Town',
+                image: 'Cape Town 21-27-26 & 4-10-27.PNG',
+                price: 'From N$ 10950',
+                description: 'Discover the breathtaking beauty of South Africa\'s mother city. Explore Table Mountain, visit the Cape of Good Hope, experience world-class winelands, and enjoy pristine beaches. This comprehensive tour combines adventure, culture, and luxury in one unforgettable package.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 4 nights' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Includes: wine tour & tasting, table mountain, camps bay, Mojo Market, Sunset Champagne cruise' },
+                    { icon: 'fas fa-utensils', text: 'Meals: Breakfast included' },
+                    { icon: 'fas fa-hotel', text: 'Accommodation: Luxury boutique hotels' },
+                    { icon: 'fas fa-car', text: 'Bus transport from Windhoek & back' }
+                ]
+            },
+            'msc-dur-moz': {
+                title: 'MSC Cruise (Pomene Island)',
+                image: 'MSC Cruise Dur-Moz 26-27.PNG',
+                price: 'From N$ 45950',
+                description: 'Set sail on a luxurious MSC cruise from Durban to the pristine beaches of Mozambique. Experience world-class amenities and entertainment while exploring the beautiful Indian Ocean coastline. Perfect for beach lovers and adventure seekers.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 4 nights on board the MSC armonia, 1 night hotel stay' },
+                    { icon: 'fas fa-ship', text: 'Ship: MSC Orchestra' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Ports: Durban, Pomene Island, Maputo' },
+                    { icon: 'fas fa-utensils', text: 'Dining: All meals in a buffet& dining rooms' },
+                    { icon: 'fas fa-swimming-pool', text: 'Amenities: Day tie activities, night time live theater shows' },
+                    { icon: 'fas fa-sun', text: 'Activities: Beach excursions included' }
+                ]
+            },
+            'msc-christmas': {
+                title: 'MSC Christmas Cruise',
+                image: 'MSC Christmas Cruise dec 26.PNG',
+                price: 'From N$ 45950',
+                description: 'Set sail on a luxurious MSC cruise from Durban to the pristine beaches of Mozambique. Experience world-class amenities and entertainment while exploring the beautiful Indian Ocean coastline. Perfect for beach lovers and adventure seekers.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 5 nights on board the MSC armonia, 1 night in Durban' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Ports: Transfers in Durban' },
+                    { icon: 'fas fa-utensils', text: 'Dining: All meals in a buffet& dining rooms' },
+                    { icon: 'fas fa-sun', text: 'Activities: Beach excursions included' }
+                ]
+            },
+            // Add similar data for other destinations...
+            'greece-cruise': {
+                title: 'MSC Mediterranean Cruise',
+                image: 'Greece CRUISE 26.PNG',
+                price: 'From N$108500',
+                description: 'Experience the magic of the Greek Isles aboard a luxurious MSC cruise. Visit Santorini, Athens, and other iconic destinations while enjoying premium amenities and authentic Greek experiences.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 7 nights on board the MSC Sinfonia, 1 night hotel stay' },
+                    { icon: 'fas fa-utensils', text: 'Dining: All meals on board' },
+                    { icon: 'fas fa-landmark', text: 'Excursions: ocean view cabin & all entertainment on board' },
+                    { icon: 'fas fa-swimmer', text: 'Activities: Beach clubs & water sports' }
+                ]
+            },
+            'istanbul': {
+                title: 'Group Tour to Istanbul',
+                image: 'Istanbul 2 june 26.PNG',
+                price: 'From N$ 28950',
+                description: 'Discover the rich history and culture of Istanbul where East meets West. Explore vibrant bazaars,Istanbul walking tour, and enjoy breathtaking Bosphorus views on this immersive cultural journey.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration:5 nights' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Includes: Turkish dinner & show, Istanbul walking tour' },
+                    { icon: 'fas fa-utensils', text: 'Meals: Breakfast included' },
+                    { icon: 'fas fa-hotel', text: 'Accommodation: 4-star city center hotel' },
+                    { icon: 'fas fa-ship', text: 'Cruise: Bosphorus dinner cruise included' }
+                ]
+            },
+            'mauritius-cruise': {
+                title: 'MSC Mauritius Cruise',
+                image: 'Mauritius Cruise 2 dec 26 - jan 27.PNG',
+                price: 'From N$ 107500',
+                description: 'Discover the exotic charm of Mauritius with its French-inspired culture, volcanic landscapes, and turquoise lagoons. Experience luxury accommodations and world-class dining aboard this premium cruise.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 12 nights on board' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Includes: Mauritius Island tour, lagoon activities' },
+                    { icon: 'fas fa-utensils', text: 'Dining: All meals on board' },
+                    { icon: 'fas fa-swimming-pool', text: 'Amenities: Balcony Cabin' },
+                    { icon: 'fas fa-sun', text: 'Activities: All Entertainment on board' }
+                ]
+            },
+            'zanzibar': {
+                title: 'Group Tour to Zanzibar',
+                image: 'Zanzibar 2026.PNG',
+                price: 'From N$ 27950',
+                description: 'Experience the magic of the Spice Island with its white sand beaches, historic Stone Town, and rich cultural heritage. This tour combines relaxation, history, and authentic African experiences in one unforgettable journey.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 5 nights' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Includes: Stone Town tour, Stone Farm Tour, beach activities' },
+                    { icon: 'fas fa-utensils', text: 'Meals: Breakfast & dinner included' },
+                    { icon: 'fas fa-hotel', text: 'Accommodation: Beachfront luxury resort' },
+                    { icon: 'fas fa-swimmer', text: 'Activities: Snorkeling, island tours, sunset cruise' },
+                    { icon: 'fas fa-plane', text: 'Flights: Return flights from Windhoek' }
+                ]
+            },
+            'msc-cruise': {
+                title: 'MSC Cruise Adventure',
+                image: 'MSC Cruise Dur-Moz 26-27.PNG',
+                price: 'From N$ 43500',
+                description: 'Explore the stunning Southern African coastlines aboard a luxurious MSC cruise. Enjoy premium accommodations, world-class dining, and exciting entertainment while visiting pristine beaches and exotic ports.',
+                details: [
+                    { icon: 'fas fa-calendar-alt', text: 'Duration: 4 nights on board, 1 night hotel stay' },
+                    { icon: 'fas fa-map-marker-alt', text: 'Travel: Return Flights from Windhoek, Transfers in Durban.' },
+                    { icon: 'fas fa-ship', text: 'Ship: Premium MSC vessel' },
+                    { icon: 'fas fa-utensils', text: 'Dining: All meals in buffet & dining rooms' },
+                    { icon: 'fas fa-swimming-pool', text: 'Amenities: Pool, spa, theaters' },
+                    { icon: 'fas fa-sun', text: 'Activities: Night Time Theatre Shows, Full day on the Pomene Island' }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('destinationModal');
+            const modalClose = document.querySelector('.modal-close');
+            const destinationCards = document.querySelectorAll('.destination-card');
+            
+            // Set up click events for destination cards
+            destinationCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const destinationId = this.getAttribute('data-destination');
+                    const data = destinationData[destinationId];
+                    
+                    if (data) {
+                        // Update modal content
+                        document.getElementById('modalTitle').textContent = data.title;
+                        document.getElementById('modalPrice').textContent = data.price;
+                        document.getElementById('modalDescription').textContent = data.description;
+                        document.getElementById('modalHeader').style.backgroundImage = `url('${data.image}')`;
+                        
+                        // Update details grid
+                        const detailsGrid = document.getElementById('modalDetails');
+                        detailsGrid.innerHTML = '';
+                        data.details.forEach(detail => {
+                            const detailItem = document.createElement('div');
+                            detailItem.className = 'detail-item';
+                            detailItem.innerHTML = `
+                                <i class="${detail.icon}"></i>
+                                <span>${detail.text}</span>
+                            `;
+                            detailsGrid.appendChild(detailItem);
+                        });
+                        
+                        // Show modal
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal events
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+            
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            console.log('Services page loaded successfully');
+        });
+    </script>
+</body>
+</html>

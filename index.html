@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel with Etienne | Your Cruise Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Mobile overflow fix */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+        /* ====== CSS RESET & BASE STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a1f44;
+            --navy-light: #1a2f5d;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --accent: #f4b41a; /* A warm golden accent for buttons/hover */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(10, 31, 68, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--navy);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* ====== NAVIGATION ====== */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-info-header a {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-info-header a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        /* ====== HERO SLIDER ====== */
+        .hero {
+            margin-top: 80px; /* Offset for fixed header */
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Placeholder Backgrounds - REPLACE with client's actual cruise images */
+        .slide-1 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00052.png'); }
+        .slide-2 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00042.jpeg'); }
+        .slide-3 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00032.jpeg'); }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            background-color: var(--accent);
+            color: var(--navy);
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* ====== INTRODUCTION SECTION ====== */
+        .intro {
+            background-color: var(--off-white);
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-text h2 {
+            font-size: 2.3rem;
+        }
+
+        .intro-text .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .intro-features {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature {
+            flex: 1 1 200px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            background-color: var(--navy);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-width: 350px;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ====== FEATURED REGIONS (GLASS HOVER EFFECT) ====== */
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .region-card {
+            position: relative;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .region-bg {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        /* Placeholder Region Images - REPLACE with client's actual destination photos */
+        .region-1 { background-image: url('image00019.jpeg'); }
+        .region-2 { background-image: url('image00043.jpeg'); }
+        .region-3 { background-image: url('image00037.png'); }
+        .region-4 { background-image: url('image00044.jpeg'); }
+        .region-5 { background-image: url('image00059.png'); }
+        .region-6 { background-image: url('image00027.jpeg'); }
+
+        .region-card:hover .region-bg {
+            transform: scale(1.05);
+        }
+
+        /* GLASS HOVER EFFECT */
+        .region-glass {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .region-card:hover .region-glass {
+            transform: translateY(0);
+        }
+
+        .region-glass h3 {
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .region-glass p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* ====== TESTIMONIAL ====== */
+        .testimonial {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .testimonial .section-title h2 {
+            color: var(--white);
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .testimonial-content i {
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .client-info h4 {
+            color: var(--accent);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        /* ====== CALL TO ACTION ====== */
+        .cta {
+            text-align: center;
+            background-color: var(--off-white);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-method {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            min-width: 250px;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-method i {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .contact-method h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-method a {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.2rem;
+            word-break: break-all;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1 1 250px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            color: var(--navy);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .intro-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .feature {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links,
+            .contact-info-header {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                text-align: center;
+            }
+            
+            .nav-links.active li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .regions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero .btn {
+                padding: 12px 30px;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-method {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ====== HEADER & NAVIGATION ====== -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 120px; width: auto; margin-left: 15px;"></a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Cruise Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                
+                <div class="contact-info-header">
+                    <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfre" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====== HERO SLIDER ====== -->
+    <section class="hero">
+        <div class="slider">
+            <div class="slide slide-1 active">
+                <div class="hero-content">
+                    <h1>Your Expert Cruise Curator</h1>
+                    <p>Set sail on your dream voyage with personalized cruise planning tailored just for you.</p>
+                    <a href="services.html" class="btn"> Explore Our Upcoming Trips</a> 
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="hero-content">
+                    <h1>Tailored Experiences on the High Seas</h1>
+                    <p>From family adventures to romantic getaways, we craft the perfect cruise itinerary.</p>
+                    <a href="services.html" class="btn">Explore Our Upcoming Trips</a>
+                </div>
+            </div>
+            <div class="slide slide-3">
+                <div class="hero-content">
+                    <h1>Island Memories </h1>
+                    <p>Create lasting memories with friends in paradise during our group excursions.</p>
+                    <a href="services.html" class="btn">Explore Our Upcoming Trips</a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- ====== INTRODUCTION ====== -->
+    <section class="intro section-padding">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Why Choose <span class="highlight">Travel with Etienne</span>?</h2>
+                    <p>Etienne specializes in creating seamless, luxurious, and unforgettable sea voyages. We handle every detail so you can focus on making memories.</p>
+                    
+                    <div class="intro-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-anchor"></i>
+                            </div>
+                            <div>
+                                <h4>Local Expertise </h4>
+                                <p>A Namibian company that understands the unique needs of our people.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h4>Budget-Friendly Trips</h4>
+                                <p>Travel without breaking the bank..</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div>
+                                <h4>Stress-Free Planning</h4>
+                                <p>From flights to accommodation and activities, we handle it all.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="btn" style="margin-top: 20px;">Learn More About Us</a>
+                </div>
+                
+                <div class="intro-image">
+                    <!-- Replace with client's photo -->
+                    <img src="image00042.jpeg" alt="Etienne, Cruise Specialist">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FEATURED CRUISE REGIONS ====== -->
+    <section class="regions section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Discover Your Next Destination</h2>
+                <p>Explore our most popular cruise regions, each offering unique experiences.</p>
+            </div>
+            
+            <div class="regions-grid">
+                <!-- Region Card 1 -->
+                <div class="region-card">
+                    <div class="region-bg region-1"></div>
+                    <div class="region-glass">
+                        <h3>Sail Into Serenity</h3>
+                        <p>Where crystal waves meet endless horizons, and every sunset paints a new adventure on the ocean's canvas.</p>
+                    </div>
+                </div>
+                
+                <!-- Region Card 2 -->
+                <div class="region-card">
+                    <div class="region-bg region-2"></div>
+                    <div class="region-glass">
+                        <h3>Exotic Island Escapes</h3>
+                        <p>Discover hidden gems and tropical paradises with pristine beaches and warm hospitality.</p>
+                    </div>
+                </div>
+                
+                <!-- Region Card 3 -->
+                <div class="region-card">
+                    <div class="region-bg region-3"></div>
+                    <div class="region-glass">
+                        <h3>Champagne Dreams</h3>
+                        <p>Indulge in all-inclusive celebrations with champagne, music, and endless fun.</p>
+                    </div>
+                </div>
+                
+                <!-- Region Card 4 -->
+                <div class="region-card">
+                    <div class="region-bg region-4"></div>
+                    <div class="region-glass">
+                        <h3>Majestic at Sea</h3>
+                        <p>Experience the awe-inspiring scale of luxury ships from unique perspectives.</p>
+                    </div>
+                </div>
+                
+                <!-- Region Card 5 -->
+                <div class="region-card">
+                    <div class="region-bg region-5"></div>
+                    <div class="region-glass">
+                        <h3>Exotic Island Escapes</h3>
+                        <p>Discover hidden gems and tropical paradises with pristine beaches and warm hospitality.</p>
+                    </div>
+                </div>
+                
+                <!-- Region Card 6 -->
+                <div class="region-card">
+                    <div class="region-bg region-6"></div>
+                    <div class="region-glass">
+                        <h3>Tropical Escape</h3>
+                        <p>Journey to remote islands where turquoise waters and white sand await.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CALL TO ACTION ====== -->
+    <section class="cta section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Plan Your Voyage?</h2>
+                <p>Contact Etienne directly for a personalized consultation. Let's craft your perfect cruise experience together.</p>
+            </div>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Directly</h3>
+                    <p>Speak with Etienne to discuss your dream cruise</p>
+                    <a href="tel:+264812842832">+264 81 284 2832</a>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Send an Email</h3>
+                    <p>Describe your ideal trip and we'll create a proposal</p>
+                    <a href="mailto:info@travelwithetienne.com">info@travelwithetienne.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 100px; width: auto; margin-right: 12px; vertical-align: middle; display: inline-block;"><span style="font-size: 1rem; vertical-align: middle;">Travel with <span>Etienne</span></span></div>
+                    <p>Your personal cruise specialist, creating unforgettable sea voyage experiences tailored just for you.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17sGB4R4vM/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        
+                        
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Cruise Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Luderitz Namibia</p>
+                    <p><i class="fas fa-phone"></i> +264812842832</p>
+                    <p><i class="fas fa-envelope"></i> info@travelwithetienne.com</p>
+                    
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Travel with Etienne. All rights reserved. | Designed by echoweb</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== JAVASCRIPT ====== -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Hero Slider Functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show the selected slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        // Dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto-slide every 5 seconds
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Initialize auto-slide
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-slide on hover
+        const slider = document.querySelector('.slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Initialize first slide
+        showSlide(0);
+    </script>
+</body>
+</html>
