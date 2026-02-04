@@ -246,6 +246,8 @@ img, video, iframe {
             display: flex;
             align-items: center;
             justify-content: center;
+            contain: paint;
+            will-change: opacity;
         }
 
         .slide.active {
@@ -253,9 +255,9 @@ img, video, iframe {
         }
 
         /* Placeholder Backgrounds - REPLACE with client's actual cruise images */
-        .slide-1 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00052.png'); }
-        .slide-2 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00042.jpeg'); }
-        .slide-3 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00032.jpeg'); }
+        .slide-1 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00052.png'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .slide-2 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00042.jpeg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .slide-3 { background-image: linear-gradient(rgba(10, 31, 68, 0.7), rgba(10, 31, 68, 0.7)), url('image00032.jpeg'); background-size: cover; background-position: center; background-attachment: fixed; }
 
         .hero-content {
             text-align: center;
@@ -400,15 +402,17 @@ img, video, iframe {
             background-size: cover;
             background-position: center;
             transition: transform 0.5s ease;
+            contain: paint;
+            will-change: transform;
         }
 
         /* Placeholder Region Images - REPLACE with client's actual destination photos */
-        .region-1 { background-image: url('image00019.jpeg'); }
-        .region-2 { background-image: url('image00043.jpeg'); }
-        .region-3 { background-image: url('image00022.jpeg'); }
-        .region-4 { background-image: url('image00044.jpeg'); }
-        .region-5 { background-image: url('image00059.png'); }
-        .region-6 { background-image: url('image00027.jpeg'); }
+        .region-1 { background-image: url('image00019.jpeg'); background-size: cover; background-position: center; }
+        .region-2 { background-image: url('image00043.jpeg'); background-size: cover; background-position: center; }
+        .region-3 { background-image: url('image00037.png'); background-size: cover; background-position: center; }
+        .region-4 { background-image: url('image00044.jpeg'); background-size: cover; background-position: center; }
+        .region-5 { background-image: url('image00059.png'); background-size: cover; background-position: center; }
+        .region-6 { background-image: url('image00027.jpeg'); background-size: cover; background-position: center; }
 
         .region-card:hover .region-bg {
             transform: scale(1.05);
@@ -750,7 +754,7 @@ img, video, iframe {
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 120px; width: auto; margin-left: 15px;" loading="lazy" width="120" height="120"></a>
+                <a href="index.html" class="logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 120px; width: auto; margin-left: 15px;" loading="lazy" width="120" height="120" decoding="async"></a>
                 
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -849,7 +853,7 @@ img, video, iframe {
                 
                 <div class="intro-image">
                     <!-- Replace with client's photo -->
-                    <img src="image00042.jpeg" alt="Etienne, Cruise Specialist" loading="lazy" width="500" height="500">
+                    <img src="image00042.jpeg" alt="Etienne, Cruise Specialist" loading="lazy" width="500" height="500" decoding="async">
                 </div>
             </div>
         </div>
@@ -952,7 +956,7 @@ img, video, iframe {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col footer-about">
-                    <div class="footer-logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 100px; width: auto; margin-right: 12px; vertical-align: middle; display: inline-block;" loading="lazy" width="100" height="100"><span style="font-size: 1rem; vertical-align: middle;">Travel with <span>Etienne</span></span></div>
+                    <div class="footer-logo"><img src="travel with etienne logo in black.png" alt="Travel with Etienne Logo" style="height: 100px; width: auto; margin-right: 12px; vertical-align: middle; display: inline-block;" loading="lazy" width="100" height="100" decoding="async"><span style="font-size: 1rem; vertical-align: middle;">Travel with <span>Etienne</span></span></div>
                     <p>Your personal cruise specialist, creating unforgettable sea voyage experiences tailored just for you.</p>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/travelwithetienne/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
