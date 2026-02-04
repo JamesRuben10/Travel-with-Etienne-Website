@@ -200,7 +200,7 @@
             background: linear-gradient(rgba(10, 31, 68, 0.85), rgba(10, 31, 68, 0.9)), url('image00003.jpeg') no-repeat center center/cover;
             background-size: cover;
             background-position: center;
-            color: var(--white);
+            background-attachment: fixed;
             text-align: center;
             padding: 150px 0 80px;
             margin-top: 80px;
@@ -277,6 +277,8 @@
             object-fit: cover;
             display: block;
             transition: var(--transition);
+            contain: paint;
+            will-change: transform;
         }
 
         .gallery-item:hover .gallery-image {
